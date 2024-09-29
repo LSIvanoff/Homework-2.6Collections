@@ -16,7 +16,7 @@ import java.util.Map;
 public class EmployeeServiceImpl implements EmployeeService {
     private final int STORAGE_SIZE = 10;
 
-    public Map <String , Employee>  employees;
+    public Map<String, Employee> employees;
 
     {
         employees = new HashMap<>(Map.of(
@@ -37,6 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 new Employee("Федор", "Федоров")
         ));
     }
+
     @Override
 
 
@@ -52,13 +53,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
 
-        if (employees.containsKey(employee.getFullName()))  {
+        if (employees.containsKey(employee.getFullName())) {
 
             throw new EmployeeAlreadyAddedInList("Сотрудник уже есть в хранилище");
 
         }
 
-        employees.put(employee.getFullName(), employee );
+        employees.put(employee.getFullName(), employee);
 
         return employee;
 
@@ -76,7 +77,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             return employees.remove(employee.getFullName());
 
 
-
         }
 
         throw new EmployeeNotFoundInList("Такого  сотрудника нет в хранилище");
@@ -90,7 +90,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         Employee employee = new Employee(name, lastName);
 
-        if (employees.containsKey (employee.getFullName())) {
+        if (employees.containsKey(employee.getFullName())) {
 
             return employees.get(employee.getFullName());
 
@@ -102,14 +102,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
 
-    public Collection <Employee> getAll() {
+    public Collection<Employee> getAll() {
 
         return Collections.unmodifiableCollection(employees.values());
     }
 
-    private String getFullName (String name, String lastName) {return  name + lastName;}
-    private void checkExistence (String fullName) {
-        if (! employees.containsKey (fullName)) {
+    private String getFullName(String name, String lastName) {
+        return name + lastName;
+    }
+
+    private void checkExistence(String fullName) {
+        if (!employees.containsKey(fullName)) {
             throw new EmployeeNotFoundInList("Такого сотрудника нет");
         }
     }

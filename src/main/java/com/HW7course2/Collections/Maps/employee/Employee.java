@@ -1,9 +1,12 @@
 package com.HW7course2.Collections.Maps.employee;
 
 import java.util.Objects;
+
 public class Employee {
+
     private final String name;
     private final String lastName;
+
     public Employee(String name, String lastName) {
 
         this.name = name;
@@ -11,9 +14,11 @@ public class Employee {
         this.lastName = lastName;
 
     }
+
     public String getName() {
         return name;
     }
+
     public String getLastName() {
         return lastName;
     }
@@ -32,6 +37,7 @@ public class Employee {
         Employee employee = (Employee) o;
         return Objects.equals(getName(), employee.getName()) && Objects.equals(getLastName(), employee.getLastName());
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(getName(), getLastName());
